@@ -12,7 +12,7 @@ namespace ADO.NET_AddressBook
             bool flag = true;
             while (flag)
             {
-                Console.WriteLine("Enter your Choice Number to Execute the Program Press- 1-Addition of Contact, 2-Deletion of Contact, 3-Updation of Contact, 4-View, 5-Exit");
+                Console.WriteLine("Enter your Choice Number to Execute the Program Press- 1-Addition of Contact,  2-Updation of Contact, 3-Deletion of Contact, 4-View, 5-Exit");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -32,6 +32,17 @@ namespace ADO.NET_AddressBook
                             Console.WriteLine("Provide Data According to Coloumn");                        
                         break;
                     case 2:
+                        Console.WriteLine("Enter Your Id Which you want to update");
+                        int id = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Enter Your Name");
+                        string FirstName = Console.ReadLine();                                               
+                        bool res = addressBookConfig.UpdateContact(id, FirstName);
+                        if (res == true)     
+                            Console.WriteLine("Updated Successfully");                        
+                        else                        
+                            Console.WriteLine("Not Updated");                        
+                        break;
+                    case 3:
                         flag = false;
                         break;
                 }

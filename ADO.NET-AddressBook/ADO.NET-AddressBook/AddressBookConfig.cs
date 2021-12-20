@@ -42,5 +42,29 @@ namespace ADO.NET_AddressBook
                 throw new Exception(e.Message);
             }            
         }
+        public bool UpdateContact(int id ,string FirstName) 
+        {
+            try
+            { 
+                Connection();
+
+                SqlCommand com = new SqlCommand("UpdateContact", con);
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@id", id);
+                com.Parameters.AddWithValue("@FirstName", FirstName);                
+                con.Open();
+                int i = com.ExecuteNonQuery();
+                con.Close();
+                if (i >= 1)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
     }
 }
