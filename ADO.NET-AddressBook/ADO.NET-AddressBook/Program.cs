@@ -42,7 +42,17 @@ namespace ADO.NET_AddressBook
                         else                        
                             Console.WriteLine("Not Updated");                        
                         break;
+                    
                     case 3:
+                        Console.WriteLine("Enter the id to Delete Data");
+                        int num = Convert.ToInt32(Console.ReadLine());
+                        int obj = addressBookConfig.DeleteContact(num);
+                        if (obj >= 0)
+                        {
+                            Console.WriteLine("Deleted Successfully");
+                        }
+                        break;
+                    case 4:
                         flag = false;
                         break;
                 }
