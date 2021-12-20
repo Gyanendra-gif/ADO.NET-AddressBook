@@ -53,6 +53,10 @@ namespace ADO.NET_AddressBook
                         }
                         break;
                     case 4:
+                        Console.WriteLine("Here is the List of All Contacts of Address-Book");
+                        addressBookConfig.GetAllContacts();
+                        break;
+                    case 5:
                         flag = false;
                         break;
                 }

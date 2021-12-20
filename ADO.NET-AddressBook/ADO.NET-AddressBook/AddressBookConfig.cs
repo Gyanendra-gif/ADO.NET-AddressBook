@@ -86,5 +86,28 @@ namespace ADO.NET_AddressBook
                 throw new Exception(e.Message);
             }
         }
+        public DataSet GetAllContacts()
+        {
+            try
+            {
+                Connection();
+                SqlCommand com = new SqlCommand("GetAddressBook", con);
+                com.CommandType = CommandType.StoredProcedure;
+                DataSet dataSet = new DataSet();
+                SqlDataAdapter adapter = new SqlDataAdapter("GetAddressBook", this.con);
+                adapter.Fill(dataSet, "AddressBook");
+                foreach (DataRow dr in dataSet.Tables["AddressBook"].Rows)
+                {
+                    Console.WriteLine(dr["id"] + " " + dr["FirstName"] + " " + dr["LastName"] + " " + dr["Address"] + " " + dr["City"] + " " + dr["State"] + " "
+                     + dr["ZipCode"] + " " + dr["Phone"] + " " + dr["Email"]);
+                }
+                con.Close();
+                return dataSet;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }
